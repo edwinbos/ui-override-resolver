@@ -1,11 +1,23 @@
 {
   "name": "@edwinbos/ui-override-resolver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Customise individual files from the Magento 2 PWA Studio Venia Theme",
   "main": "./lib/UiResolverPlugin/index.js",
   "files": [
     "lib/*",
     "lib/**/*",
     "intercept.js"
-  ]
+  ],
+  "pwa-studio": {
+    "targets": {
+      "intercept": "./intercept"
+    }
+  },
+  "peerDependencies": {
+    "@magento/pwa-buildpack": "^5.1.0-beta.2"
+  },
+  "devDependencies": {
+    "enhanced-resolve": "^4.1.1",
+    "@magento/pwa-buildpack": "^5.1.0-beta.2"
+  }
 }

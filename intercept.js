@@ -5,19 +5,19 @@ const {cachedCleverMerge} = require('webpack/lib/util/cleverMerge');
 
 const customStoreDir = path.resolve(__dirname, '..', '..', '..', 'src', 'overrides', 'venia-ui');
 const customLibDir = path.resolve(__dirname, '..', '..', '..', 'src', 'overrides', 'peregrine');
-const UiModulePath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '@magento', 'venia-ui', 'lib');
+const uiModulePath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '@magento', 'venia-ui', 'lib');
 const peregrineModulePath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '@magento', 'peregrine', 'lib');
 
 const myResolverPlugin = new UiResolverPlugin({
     name: name,
     projectPath: customStoreDir,
-    UiModulePath: UiModulePath
+    uiModulePath: uiModulePath
 });
 
 const myPeregrineResolverPlugin = new UiResolverPlugin({
     name: 'edwinbos/peregrine-override-resolver',
     projectPath: customLibDir,
-    UiModulePath: peregrineModulePath
+    uiModulePath: peregrineModulePath
 });
 
 module.exports = targets => {
@@ -25,7 +25,7 @@ module.exports = targets => {
     webpackCompiler.tap(compiler =>
         compiler.resolverFactory.hooks.resolveOptions
             .for('normal')
-            .tap('AddResolverToWebpackConfig', resolveOptions => {
+            .tap('AddVeniaResolverToWebpackConfig', resolveOptions => {
                 const plugin = Object.assign(
                     {
                         plugins: [myResolverPlugin, myPeregrineResolverPlugin]
@@ -36,7 +36,7 @@ module.exports = targets => {
     webpackCompiler.tap(compiler =>
         compiler.resolverFactory.hooks.resolveOptions
             .for('context')
-            .tap('AddResolverToWebpackConfig', resolveOptions => {
+            .tap('AddVeniaResolverToWebpackConfig', resolveOptions => {
                 const plugin = Object.assign(
                     {
                         plugins: [myResolverPlugin, myPeregrineResolverPlugin]
