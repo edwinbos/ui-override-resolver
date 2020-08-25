@@ -1,0 +1,11 @@
+{
+  "name": "@edwinbos/ui-override-resolver",
+  "version": "1.0.0",
+  "description": "Customise individual files from the Magento 2 PWA Studio Venia Theme",
+  "main": "./lib/UiResolverPlugin/index.js",
+  "files": [
+    "lib/*",
+    "lib/**/*",
+    "intercept.js"
+  ]
+}
